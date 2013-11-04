@@ -1,0 +1,154 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Go</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script type="text/javascript" src="libs/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="libs/jquery.playSound.js"></script>
+	<script type="text/javascript" src="libs/d3.v3.min.js"></script>
+	<script type="text/javascript" src="libs/json2.js"></script>
+	<script type="text/javascript" src="libs/canvg.js"></script>
+	<script type="text/javascript" src="libs/rgbcolor.js"></script>
+	<script type="text/javascript" src="libs/bootstrap.min.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.min.css">
+	
+	<script type="text/javascript" src="src/go.js"></script>
+	<script type="text/javascript" src="src/main.js"></script>
+
+	<style type="text/css">
+		.myicon {
+			height : 20px;
+			width : 20px;
+		}
+	
+	</style>
+		
+	</head>
+
+	<body>
+		<hr>
+		<div class="row-fluid">
+			<div class="span3">
+				<div class="row-fluid">
+					<div class="btn-group offset1"> 
+					  <a id="config" class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#">
+					  	配置
+					  	<span class="caret"></span>
+					  </a>
+					  <ul class="dropdown-menu">
+					  	<li><a id="configMenu" href="#">预配置</a></li>
+					  	<li class="divider"></li>
+					    <li><a id="handicapMenu">让子</a></li>  
+						  <li><a id="practiceMenu">习题</a></li>
+					  </ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row-fluid">
+			<div id="info" class="span3">
+				<div class="row-fluid">
+					<div id="setup" class="well offset1" style="display:none">
+						<div class="btn-group" data-toggle="buttons-radio">
+						  <button id="setupBlack" class="btn btn-small" style="margin:3px 0px 3px 0px">
+						  	<svg style="width:14px;height:14px">
+									<circle cx="7" cy="7" r="5" stroke="black" fill="black"/></circle>
+								</svg>
+							</button>
+						  <button id="setupWhite" class="btn btn-small active">
+						  	<svg style="width:14px;height:14px">
+									<circle cx="7" cy="7" r="5" stroke="black" fill="white"/></circle>
+								</svg>
+						  </button>
+						</div>
+						<button id="backSetupButton" class="btn btn-small">
+							<i class="icon-backward"></i>
+						</button>
+						<button id="saveSetupButton" class="btn btn-small">
+							<i class="icon-edit"></i>
+						</button>
+						<button id="endSetupButton" class="btn btn-small">
+							<i class="icon-ok"></i>
+						</button>
+					</div>
+				</div>
+				<div class="row-fluid">
+					<div id="control" class="well offset1">
+						<div class="btn-toolbar">
+							<button id="startButton" class="btn btn-success btn-small">
+								<i class="icon-play"></i>
+							</button>
+							<button id="retractButton" class="btn btn-small" style="display:none">
+								<i class="icon-backward"></i>
+							</button>
+							<button id="forwardButton" class="btn btn-small" style="display:none">
+								<i class="icon-forward"></i>
+							</button>
+						</div>
+						<div class="row-fluid">
+							<div class="span2" >
+								<div style="padding:5px;width:30px;height:30px">
+									<svg>
+										<circle cx="10" cy="10" r="10" fill="black"/></circle>
+									</svg>
+								</div>
+							</div>
+
+							<div class="span4">
+								<div id="blackTimer" style="padding:5px">
+									00:00:00
+								</div>
+							</div>
+							
+							<div class="span2">
+								<div style="padding:5px;width:30px;height:30px">
+									<svg>
+										<circle cx="10" cy="10" r="10" stroke="black" fill="white"/></circle>
+									</svg>
+								</div>
+							</div>
+							<div class="span4">
+								<div id="whiteTimer" style="padding:5px">
+									00:00:00
+								</div>
+							</div>
+						</div>
+						<div class="row-fluid">
+							<div class="span6">
+								<i id="blackIndicator" style="margin:5px;"></i>
+							</div>
+							<div class="span6">
+								<i id="whiteIndicator" style="margin:5px;"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="span9">
+				<div id="chart" class="well" style="width:600px;height:600px;background-color:#deb887;"></div>
+			</div>
+		</div>
+
+		<div id="report" class="modal hide fade">
+		  <div class="modal-header">
+		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		    <h3>报告错误</h3>
+		  </div>
+		  <div class="modal-body">
+		    <div id="reportBitmap" style="width:300px;height:300px;background-color:#deb887;" >
+		    	<canvas id="canvas">
+		    	</canvas>
+		    </div>
+		  </div>
+		  <div class="modal-footer">
+		    <a href="#" class="btn" data-dismiss="modal">关闭</a>
+		  </div>
+		</div>
+	<hr>
+	</body>
+	<script type="text/javascript">	
+	</script>
+</html>
