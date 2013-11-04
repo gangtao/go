@@ -201,7 +201,7 @@ function go(view, onswitch, onerror) {
 		}
 
 		currentPiece.piece = current;
-		if (rob(col, row) || tight(col, row)) {
+		if (plunder(col, row) || breath(col, row)) {
 			currentPiece.piece = null;
 			current = !current;
 			return;
@@ -247,14 +247,14 @@ function go(view, onswitch, onerror) {
 		}
 
 		future.push(lastStep);
-		
+
 		if (configuration.mode === "play") {
 			current = !current;
 			if (changePlayer) {
 				changePlayer(current);
 			}
 		}
-		
+
 	}
 
 	function forward() {
@@ -296,7 +296,7 @@ function go(view, onswitch, onerror) {
 		$.playSound("resources/click.wav");
 	}
 
-	function tight(col, row) {
+	function breath(col, row) {
 		//TODO : performace improvement
 
 		function inBlock(x, y, block) {
@@ -313,7 +313,7 @@ function go(view, onswitch, onerror) {
 
 		//检查还剩几口气
 
-		function tight(col, row, piece) {
+		function breath(col, row, piece) {
 			var queue = [],
 				block = [];
 			var result = {};
@@ -372,7 +372,7 @@ function go(view, onswitch, onerror) {
 						y = row + dy;
 					if (x >= 0 && y >= 0 && x < 19 && y < 19) {
 						if (data[x][y].piece !== null && data[x][y].piece === !current && !inBlock(x, y, killBlock)) {
-							var kr = tight(x, y, !current);
+							var kr = breath(x, y, !current);
 							if (kr !== null && kr.breath === 0) {
 								killBlock = killBlock.concat(kr.block);
 							}
@@ -389,7 +389,7 @@ function go(view, onswitch, onerror) {
 		}
 
 		//如果是自己的最后一口气，则为禁手，返回true
-		var r = tight(col, row, current);
+		var r = breath(col, row, current);
 		if (r && r.breath === 0) {
 			showInvalid("不够气");
 			return true;
@@ -413,7 +413,7 @@ function go(view, onswitch, onerror) {
 		}
 	}
 
-	function rob(col, row) {
+	function plunder(col, row) {
 		var length = history.length,
 			lastStep = history[length - 1];
 
